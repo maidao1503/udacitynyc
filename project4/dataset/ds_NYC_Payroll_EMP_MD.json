@@ -1,5 +1,5 @@
 {
-	"name": "NYC_Payroll_EMP_MD",
+	"name": "ds_NYC_Payroll_EMP_MD",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_adl_synapse_nycpayroll",
