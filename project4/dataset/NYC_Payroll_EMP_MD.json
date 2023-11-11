@@ -11,6 +11,7 @@
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"fileName": "NYC_Payroll_EMP_MD.csv",
+				"folderPath": "target",
 				"fileSystem": "synapsefilesystem"
 			},
 			"columnDelimiter": ",",
