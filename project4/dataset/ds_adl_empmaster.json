@@ -1,5 +1,5 @@
 {
-	"name": "ds_sdl_empmaster",
+	"name": "ds_adl_empmaster",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_adl_nycpayroll",
