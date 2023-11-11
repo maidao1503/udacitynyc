@@ -71,7 +71,7 @@
 				"          TotalOTPaid as string,",
 				"          TotalOtherPay as string",
 				"     ),",
-				"     partitionFileNames:['payroll_emp_md.csv'],",
+				"     partitionFileNames:['payroll_data.csv'],",
 				"     umask: 0022,",
 				"     preCommands: [],",
 				"     postCommands: [],",
