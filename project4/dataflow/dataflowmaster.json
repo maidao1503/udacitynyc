@@ -48,7 +48,8 @@
 				"          EmployeeID,",
 				"          LastName,",
 				"          FirstName",
-				"     )) ~> sinkpayrollemd"
+				"     ),",
+				"     partitionBy('hash', 1)) ~> sinkpayrollemd"
 			]
 		}
 	}
