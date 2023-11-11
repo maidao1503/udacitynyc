@@ -8,11 +8,17 @@
 		"ls_adl_nycpayroll_accountKey": {
 			"value": ""
 		},
+		"ls_adl_synapse_nycpayroll_accountKey": {
+			"value": ""
+		},
 		"ls_sqldb_nycpayroll_connectionString": {
 			"value": ""
 		},
 		"ls_adl_nycpayroll_properties_typeProperties_url": {
 			"value": "https://nycstorageaccount.dfs.core.windows.net/"
+		},
+		"ls_adl_synapse_nycpayroll_properties_typeProperties_url": {
+			"value": "https://synapsestoreageacc.dfs.core.windows.net/"
 		}
 	}
 }
