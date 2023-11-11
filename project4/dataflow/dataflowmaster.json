@@ -38,7 +38,7 @@
 				"          LastName as string,",
 				"          FirstName as string",
 				"     ),",
-				"     partitionFileNames:['payroll_emp_md.csv.csv'],",
+				"     partitionFileNames:['payroll_emp_md.csv'],",
 				"     umask: 0022,",
 				"     preCommands: [],",
 				"     postCommands: [],",
