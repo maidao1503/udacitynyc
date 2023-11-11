@@ -304,7 +304,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/ds_sql_NYC_Payroll_Data')]",
+			"name": "[concat(parameters('factoryName'), '/ds_sqldb_NYC_Payroll_Data')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -347,7 +347,7 @@
 					},
 					{
 						"name": "AgencyStartDate",
-						"type": "date"
+						"type": "varchar"
 					},
 					{
 						"name": "WorkLocationBorough",
