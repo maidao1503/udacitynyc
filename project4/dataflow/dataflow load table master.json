@@ -1,5 +1,5 @@
 {
-	"name": "dataflowmaster",
+	"name": "dataflow load table master",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
@@ -9,7 +9,21 @@
 						"referenceName": "ds_adl_empmaster",
 						"type": "DatasetReference"
 					},
-					"name": "sourceempmaster"
+					"name": "sourceEmpMaster"
+				},
+				{
+					"dataset": {
+						"referenceName": "ds_adl_titlemaster",
+						"type": "DatasetReference"
+					},
+					"name": "sourceTitleMaster"
+				},
+				{
+					"dataset": {
+						"referenceName": "ds_adl_agencymaster",
+						"type": "DatasetReference"
+					},
+					"name": "sourceAgencyMaster"
 				}
 			],
 			"sinks": [
@@ -18,7 +32,21 @@
 						"referenceName": "NYC_Payroll_EMP_MD",
 						"type": "DatasetReference"
 					},
-					"name": "sinkpayrollemd"
+					"name": "sinkPayrollEmd"
+				},
+				{
+					"dataset": {
+						"referenceName": "ds_NYC_Payroll_TITLE_MD",
+						"type": "DatasetReference"
+					},
+					"name": "sinkTitleMaster"
+				},
+				{
+					"dataset": {
+						"referenceName": "ds_NYC_Payroll_AGENCY_MD",
+						"type": "DatasetReference"
+					},
+					"name": "sinkAgencyMaster"
 				}
 			],
 			"transformations": [],
@@ -30,8 +58,22 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> sourceempmaster",
-				"sourceempmaster sink(allowSchemaDrift: true,",
+				"     ignoreNoFilesFound: false) ~> sourceEmpMaster",
+				"source(output(",
+				"          TitleCode as string,",
+				"          TitleDescription as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> sourceTitleMaster",
+				"source(output(",
+				"          AgencyID as string,",
+				"          AgencyName as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> sourceAgencyMaster",
+				"sourceEmpMaster sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
 				"          EmployeeID as string,",
@@ -49,7 +91,41 @@
 				"          LastName,",
 				"          FirstName",
 				"     ),",
-				"     partitionBy('hash', 1)) ~> sinkpayrollemd"
+				"     partitionBy('hash', 1)) ~> sinkPayrollEmd",
+				"sourceTitleMaster sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          TitleCode as string,",
+				"          TitleDescription as string",
+				"     ),",
+				"     partitionFileNames:['payroll_title_md.csv'],",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     mapColumn(",
+				"          TitleCode,",
+				"          TitleDescription",
+				"     ),",
+				"     partitionBy('hash', 1)) ~> sinkTitleMaster",
+				"sourceAgencyMaster sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          AgencyID as string,",
+				"          AgencyName as string",
+				"     ),",
+				"     partitionFileNames:['payroll_agency_md.csv'],",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     mapColumn(",
+				"          AgencyID,",
+				"          AgencyName",
+				"     ),",
+				"     partitionBy('hash', 1)) ~> sinkAgencyMaster"
 			]
 		}
 	}
