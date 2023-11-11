@@ -38,7 +38,7 @@
 				"          LastName as string,",
 				"          FirstName as string",
 				"     ),",
-				"     partitionFileNames:['NYC_Payroll_EMP_MD.csv'],",
+				"     partitionFileNames:['payroll_emp_md.csv.csv'],",
 				"     umask: 0022,",
 				"     preCommands: [],",
 				"     postCommands: [],",
